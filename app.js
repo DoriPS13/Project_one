@@ -14,7 +14,7 @@ app.set('view engine','ejs');
 app.use(bodyParser.urlencoded({extend: true}));
 
 app.use(cookieSession({
-	secret: 'thisIsTheSecretKey',
+	secret: 'thisIsTheSecretKey',//to be changed
 	name: 'cookie created by Palmer',
 	maxage: 360000
 }));
@@ -39,8 +39,9 @@ passport.deserializeUser(function(id,done) {
 	})
 })
 //ramen search by location
+var mclient = new locu.MenuItemClient(process.env.locuKey); 
+
 var ramenSearch = function(loc, callback) {
-	var mclient = new locu.MenuItemClient(process.env.locuKey); 
 	  mclient.search({name:'ramen', locality: loc}, function(result){
 	  	var ramenResults = result.objects
 	     // console.log(result.objects[0].name);
@@ -73,25 +74,15 @@ app.post('/search', function(req,res) {
 app.get('/results', function(req,res) {
 
 })
-//single spot not authorized
-app.get('/results/:id', function(req,res) {
+
+ app.get('/ramen/:id', function(req,res) {
 	var ramenId = req.params.id
-	console.log(ramenId)
-		var singleRamen = function(ramenId, callback) {
-			var menu_client = new locu.MenuItemClient(process.env.locuKey); 
-			//need to figure out what is needed to search for ID should go like this 
-			//http://api.locu.com/v1_0/menu_item/{menu item Locu id}/?api_key={your API key}
-			  menu_client.search({id: ramenId}, function(result){ 
-			  	var ramenResult = result.objects
-			     // console.log(result.objects[0].name);
-			     	callback.call(ramenResult)
-			  
-	  	})
-  	}
-	 singleRamen(ramenId, function() {
-	  res.render('single_result', {ramenResult: this});
-	})
+
+		mclient.request(ramenId, null, function (detailThing) {
+		res.render('single_result', {ramenResult: detailThing.objects})
+	});
 });
+
 
 //single spot authorized
 
