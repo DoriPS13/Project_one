@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>Ramen Results!<h1>
+	<ul>
+	 	<% ramenResults.forEach(function (ramen) {%>
+	 		<li><a href="/results/<%= ramen.id %>"><%= ramen.name %><br>
+	 		<%= ramen.venue.name %><br>
+
+
+
+	 		</li>
+
+	 	<% }) %> 
+	 	</ul>
+</body>
+</html>
