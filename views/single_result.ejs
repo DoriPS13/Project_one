@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+
+	<title>Ramen Hunter</title>
+
 </head>
 <body>
-		<h1> <%= ramenResult.name %><h1>
-	<ul>
-	 	
-	 		<h2><%= ramenResult.venue.name %></h2>
 
- 	</ul>
+
+	
+	 	<% ramenResult.forEach(function (ramen) {%>
+		<h1> <%= ramen.venue.name %><h1>
+			<ul>
+		 		<li><%= ramen.name %></li>
+		 		<li><%= ramen.venue.name %></li>
+		 		<li><%= ramen.price %></li>
+		 		<li><%= ramen.venue.localitry %></li>
+		 	</ul>
+
+	 		
+
+	 	<% }) %> 
+ 	
+
+ 
 
 </body>
 </html>
