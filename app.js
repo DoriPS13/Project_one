@@ -58,7 +58,18 @@ app.get('/', function(req,res) {
 //login request
 
 //signup page
+app.get('/signup', function(req,res) {
+	res.render('signup')
+})
 
+app.post('/create', function(req,res) {
+	db.create.createNewUser(req.body.username, req.body.password, function(err) {
+		res.render('signup', {message: err.message, username: req.body.username});
+	},
+	function(success) {
+		res.render('home_si')
+	})
+})
 //search 
 app.post('/search', function(req,res) {
 	console.log(req.body.location)

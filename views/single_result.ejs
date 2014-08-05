@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+	<link rel="stylesheet" href="http://cdn.foundation5.zurb.com/foundation.css">
 	<meta charset=utf-8 />
 	<title>Ramen Hunter</title>
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
@@ -13,23 +13,27 @@
 </style>
 </head>
 <body>
+	<div class="row">
+	  <div class="small-2 large-4 columns"></div>
+	  <div class="small-4 large-4 columns">
+				 	<% ramenResult.forEach(function (ramen) {%>
+					<h1> <%= ramen.venue.name %><h1>
+						<ul>
+					 		<li>Name: <%= ramen.name %></li>
+					 		<li>Eatery: <%= ramen.venue.name %></li>
+					 		<li>Price: $<%= ramen.price %></li>
+					 		<li>Location: <%= ramen.venue.locality %></li>
+					 	</ul>
 
+				 	<% }) %> 
+				 	<form method="post" action="!not sure yet!">
+				 		<input type="rating" value="">
 
-	
-	 	<% ramenResult.forEach(function (ramen) {%>
-		<h1> <%= ramen.venue.name %><h1>
-			<ul>
-		 		<li>Name: <%= ramen.name %></li>
-		 		<li>Eatery: <%= ramen.venue.name %></li>
-		 		<li>Price: $<%= ramen.price %></li>
-		 		<li>Location: <%= ramen.venue.locality %></li>
-		 	</ul>
-
-	 	<% }) %> 
-	 	<form method="post" action="!not sure yet!">
-	 		<input type="rating" value="">
-
-<div id='map'></div>
+			<div id='map'></div>
+		  
+		</div>
+	  <div class="small-6 large-4 columns"></div>
+		</div>
 
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoiZG9yaXBzMTMiLCJhIjoic0FNRE51byJ9.SSNLexDQmGPKXiJ1TH4lvw';
