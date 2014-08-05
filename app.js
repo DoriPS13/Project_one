@@ -38,12 +38,13 @@ passport.deserializeUser(function(id,done) {
 		done(error,user);
 	})
 })
-//ramen search by location
+//ramen search by location need to add if error
 var mclient = new locu.MenuItemClient(process.env.locuKey); 
 
 var ramenSearch = function(loc, callback) {
 	  mclient.search({name:'ramen', locality: loc}, function(result){
 	  	var ramenResults = result.objects
+	  	console.log(result.objects)
 	     // console.log(result.objects[0].name);
 	     	callback.call(ramenResults)
 	   
@@ -63,12 +64,14 @@ app.get('/signup', function(req,res) {
 })
 
 app.post('/create', function(req,res) {
-	db.create.createNewUser(req.body.username, req.body.password, function(err) {
-		res.render('signup', {message: err.message, username: req.body.username});
-	},
-	function(success) {
-		res.render('home_si')
-	})
+	db.user.options.classMethods.createNewUser(req.body.username, req.body.password, 
+		function(err) {
+			// console.log(err);
+		},
+		function(success) {
+
+			res.render('home_si')
+		})
 })
 //search 
 app.post('/search', function(req,res) {

@@ -23,6 +23,9 @@ Object.keys(db).forEach(function(modelName) {
   }
 })
 
+// db.User.hasMany(db.ratings);
+// db.ratings.belongsTo(db.User);
+
 // var apiKey = '9759e3fb099fc170b1317eb288727aa8c6ec92c4'
 // var mclient = new locu.MenuItemClient(apiKey); 
 //   mclient.search({name:'ramen', locality:'San Francisco'}, function(result){

@@ -2,6 +2,7 @@
 <html>
 <head>
 	<link rel="stylesheet" href="http://cdn.foundation5.zurb.com/foundation.css">
+	<link rel="stylesheet" href="css/style.css">
 	<title>Ramen Hunter</title>
 
 </head>
@@ -20,15 +21,12 @@
     <!-- Right Nav Section -->
     <ul class="right">
      <li>
-      <form method="get" action="/signup">
-				<input type="submit" class="button" value="Sign me up!">
-			</form>
 			</li>
       <li class="has-form">
         <form method="post" action="login">
-					<input type="text" placeholder="username" name="username"><br>
-					<input type="text" placeholder="password" name="password"><br>
-					<input type="submit" class="button" value="Sign Me In!">
+					<li><input type="text" placeholder="username" name="username"></li>
+					<li><input type="text" placeholder="password" name="password"></li>
+					<li><input type="submit" class="button" value="Sign Me In!"></li>
 				</form>
       </li>
     </ul>
@@ -36,6 +34,9 @@
     <!-- Left Nav Section -->
     <ul class="left">
       <li>
+       <form method="get" action="/signup">
+				<input type="submit" class="button" value="Sign me up!">
+			</form>
 			</li>
     </ul>
   </section>
