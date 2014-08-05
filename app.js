@@ -88,8 +88,6 @@ app.get('/results', function(req,res) {
 
 //rating
 
-//add to favorites
-
 //save spots 
 
 app.listen(3000, function() {

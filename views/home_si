@@ -7,11 +7,6 @@
 </head>
 <body>
 
-	<form method="post" action="login">
-		<input type="text" placeholder="username" name="username">
-		<input type="text" placeholder="password" name="password">
-		<input type="submit" value="Sign Me In!">
-	</form>
 	<form method="post" action="/search">
 		<input type="text" placeholder="San Francisco" name="location">
 		<input type="submit" value="Show Me the Ramen!">
