@@ -25,7 +25,7 @@ app.use(flash());
 
 //for checking if user has authori
 passport.serializeUser(function(user,done) {
-	done(null,user,id)
+	done(null,user.id)
 })
 
 passport.deserializeUser(function(id,done) {
@@ -58,6 +58,14 @@ app.get('/', function(req,res) {
 
 //login request
 
+app.post('/login', passport.authenticate('local', {
+  successRedirect: '/', 
+  failureRedirect: '/login', 
+  failureFlash: true
+}));
+
+
+
 //signup page
 app.get('/signup', function(req,res) {
 	res.render('signup')
@@ -69,7 +77,6 @@ app.post('/create', function(req,res) {
 			// console.log(err);
 		},
 		function(success) {
-
 			res.render('home_si')
 		})
 })

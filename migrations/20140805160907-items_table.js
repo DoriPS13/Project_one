@@ -1,10 +1,27 @@
 module.exports = {
   up: function(migration, DataTypes, done) {
     // add altering commands here, calling 'done' when finished
-    done()
+    migration.createTable('items',
+    	{id: {
+    		type: DataTypes.INTEGER,
+    		primaryKey: true,
+    		autoIncrement: true
+    	},
+    	createdAt: DataTypes.DATE,
+    	updatedAt: DataTypes.DATE,
+    	locuId: {
+    		type: DataTypes.STRING,
+    	},
+    	ratingCount: {
+    		type: DataTypes.STRING,
+    	}
+    })
+
+    .complete(done)
   },
   down: function(migration, DataTypes, done) {
     // add reverting commands here, calling 'done' when finished
-    done()
+    migration.dropTable('users')
+      .complete(done);
   }
 }
