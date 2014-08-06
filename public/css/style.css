@@ -3,7 +3,11 @@
 	margin: 10em 0;
 }
 
-#search-bar {
+#center-form {
 	margin: auto;
 	width: 50%;
+}
+
+* {
+	text-align: center
 }

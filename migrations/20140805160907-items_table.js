@@ -14,6 +14,9 @@ module.exports = {
     	},
     	ratingCount: {
     		type: DataTypes.STRING,
+    	},
+    	rating: {
+    		type: DataTypes.STRING,
     	}
     })
 

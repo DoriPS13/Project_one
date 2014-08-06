@@ -46,18 +46,11 @@ var mclient = new locu.MenuItemClient(process.env.locuKey);
 var ramenSearch = function(loc, callback) {
 	  mclient.search({name:'ramen', locality: loc}, function(result){
 	  	var ramenResults = result.objects
-	  	console.log(result.objects)
 	     // console.log(result.objects[0].name);
 	     	callback.call(ramenResults)
 	   
 	});
 };
-
-//homepage
-app.get('/', function(req,res) {
-	res.render('home')
-})
-
 //login request
 
 app.post('/login', passport.authenticate('local', {
@@ -66,31 +59,38 @@ app.post('/login', passport.authenticate('local', {
   failureFlash: true
 }));
 
-
+//homepage
+app.get('/', function(req,res) {
+res.render("home",
+	{ isAuthenticated: req.isAuthenticated(),
+   });
+});
 
 //signup page
 app.get('/signup', function(req,res) {
-	res.render('signup')
+	res.render('signup',
+	{ isAuthenticated: req.isAuthenticated(),
+   });
 })
 
 app.post('/create', function(req,res) {
 	db.user.createNewUser(req.body.username, req.body.password, 
 		function(success) {
 			console.log("Success!!")
-			res.render('home')
+			res.redirect('/')
 		},
 		function(err) {
 			console.log("ERRORED")
 			res.redirect("/signup")
 		})
 })
-//search 
+//search by location
 app.post('/search', function(req,res) {
 	console.log(req.body.location)
 		var loc = (req.body.location)
 			ramenSearch(loc, function() {
 				// console.log(this)
-				res.render('results', {ramenResults: this});
+				res.render('results', {ramenResults: this, isAuthenticated: req.isAuthenticated()});
 					// console.log('ran')
 			})
 		
@@ -104,16 +104,18 @@ app.get('/results', function(req,res) {
 	var ramenId = req.params.id
 
 		mclient.request(ramenId, null, function (detailThing) {
-		res.render('single_result', {ramenResult: detailThing.objects})
+		res.render('single_result', {ramenResult: detailThing.objects, isAuthenticated: req.isAuthenticated()})
 	});
 });
 
-
-//single spot authorized
-
 //rating
 
-//save spots 
+//logout
+app.get('/logout', function(req,res){
+  req.logout();
+  res.redirect('/')
+});
+
 
 app.listen(3000, function() {
 	console.log('Systems Online on Port 3000 Captian')
