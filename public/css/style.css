@@ -2,10 +2,31 @@
 	width: 100%;
 	margin: 10em 0;
 }
-
-#center-form {
+.search-form {
+	
+	position: absolute; left: 15em;
+	z-index: 2;
 	margin: auto;
 	width: 50%;
+}
+
+/*#center-form {
+	margin: auto;
+	width: 50%;
+}*/
+
+#search_by_loc {
+	top: 120px;
+}
+
+* {
+	text-align: center
+}
+#map {
+	position: absolute; top: 4em; 
+ 	z-index: 1;
+	width:100%;
+		margin: auto;
 }
 
 * {

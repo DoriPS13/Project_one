@@ -51,9 +51,6 @@ var ramenSearch = function(loc, callback) {
 	   
 	});
 };
-//geolocation onload
-
-
 
 //login request
 
@@ -113,7 +110,9 @@ app.get('/results', function(req,res) {
 });
 
 //current location search
-app.get
+app.post('/geo', function(req,res) {
+	
+})
 
 
 //rating

@@ -1,0 +1,61 @@
+<script>
+
+	
+	function geoFindMe() {
+
+  if (!navigator.geolocation){
+    console.log("Geolocation is not supported by your browser");
+    return;
+  }
+
+  function success(position) {
+    var lat  = position.coords.latitude;
+    var long = position.coords.longitude;
+
+
+    console.log(lat,long)
+
+    L.mapbox.accessToken = 'pk.eyJ1IjoiZG9yaXBzMTMiLCJhIjoic0FNRE51byJ9.SSNLexDQmGPKXiJ1TH4lvw';
+    var map = L.mapbox.map('map', 'examples.map-20v6611k')
+      .setView([lat, long], 16);
+
+      L.mapbox.featureLayer({
+
+      type: 'Feature',
+      geometry: {
+          type: 'Point',
+
+          coordinates: [
+            long,
+            lat
+          ]
+      },
+
+    }).addTo(map);
+        map.dragging.disable();
+        map.touchZoom.disable();
+        map.doubleClickZoom.disable();
+        map.scrollWheelZoom.disable();
+        if (map.tap) map.tap.disable();
+
+  };
+
+  function error() {
+    console.log('DOH!');
+  };
+
+ 
+
+  navigator.geolocation.getCurrentPosition(success, error);
+}
+
+// window.onload = function () {
+//     geoFindMe()
+//   // var geoButton = document.getElementById("search_by_loc");
+//   // geoButton.onsubmit = function (event) {
+//   //   event.preventDefault();
+//   // };
+// }
+
+
+</script>
