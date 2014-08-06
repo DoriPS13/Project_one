@@ -30,6 +30,7 @@ module.exports = function (sequelize, DataTypes){
       return bcrypt.compareSync(userpass, dbpass);  
     },
     createNewUser: function(username, password, success, err) {
+      console.log("CREATING NEW USER")
       if(password.length < 6) {
         err({message: "Password should be more than six characters"});
       }
@@ -38,6 +39,7 @@ module.exports = function (sequelize, DataTypes){
           username: username,
           password: User.encryptPass(password)
         }).error(function(error) {
+          console.log("HANDLING ERROR ON CREATE")
           if(error.username){
             err({message: 'Your username should be at least 6 characters long', username: username});
           }
@@ -45,7 +47,8 @@ module.exports = function (sequelize, DataTypes){
             err({message: 'An account with that username already exists', username: username});
           }
         }).success(function(user) {
-          success({message: 'Account created, please log in now'});
+          console.log("HANDLING SUCCESS ON CREATE")
+          success({message: 'Account created, please log in now'},user);
         });
       }
     }

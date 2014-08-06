@@ -13,6 +13,8 @@ var express = require('express'),
 app.set('view engine','ejs');
 app.use(bodyParser.urlencoded({extend: true}));
 
+app.use(express.static(__dirname + '/public'))
+
 app.use(cookieSession({
 	secret: 'thisIsTheSecretKey',//to be changed
 	name: 'cookie created by Palmer',
@@ -72,12 +74,14 @@ app.get('/signup', function(req,res) {
 })
 
 app.post('/create', function(req,res) {
-	db.user.options.classMethods.createNewUser(req.body.username, req.body.password, 
-		function(err) {
-			// console.log(err);
-		},
+	db.user.createNewUser(req.body.username, req.body.password, 
 		function(success) {
-			res.render('home_si')
+			console.log("Success!!")
+			res.render('home')
+		},
+		function(err) {
+			console.log("ERRORED")
+			res.redirect("/signup")
 		})
 })
 //search 
