@@ -4,15 +4,9 @@
 	<link rel="stylesheet" href="http://cdn.foundation5.zurb.com/foundation.css">
 	<meta charset=utf-8 />
 	<title>Ramen Hunter</title>
-<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-<script src='https://api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.js'></script>
-<link href='https://api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.css' rel='stylesheet' />
-<style>
-  body { margin:0; padding:0; }
-  #map { height: 500px; width:500px; margin: 20px; }
-</style>
-</head>
-<body>
+
+<%- include partials/mapbox_head.ejs %>
+
 <% if (isAuthenticated) { %> 
 <%- include partials/signed_in_nav.ejs %>
 <% }else{ %>
@@ -61,7 +55,7 @@ L.mapbox.featureLayer({
     },
     properties: {
         title: '<%= ramenResult[0].venue.name %>',
-        description: '<%= ramenResult[0].venue.street_name %>',
+        description: '<%= ramenResult[0].venue.street_address %>',
         // one can customize markers by adding simplestyle properties
         // https://www.mapbox.com/foundations/an-open-platform/#simplestyle
 			    "marker-symbol": "star",

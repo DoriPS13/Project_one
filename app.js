@@ -51,6 +51,10 @@ var ramenSearch = function(loc, callback) {
 	   
 	});
 };
+//geolocation onload
+
+
+
 //login request
 
 app.post('/login', passport.authenticate('local', {
@@ -61,8 +65,8 @@ app.post('/login', passport.authenticate('local', {
 
 //homepage
 app.get('/', function(req,res) {
-res.render("home",
-	{ isAuthenticated: req.isAuthenticated(),
+	
+	res.render("home", {isAuthenticated: req.isAuthenticated(),
    });
 });
 
@@ -108,6 +112,10 @@ app.get('/results', function(req,res) {
 	});
 });
 
+//current location search
+app.get
+
+
 //rating
 
 //logout
@@ -117,6 +125,6 @@ app.get('/logout', function(req,res){
 });
 
 
-app.listen(3000, function() {
+app.listen(process.env.PORT || 3000, function() {
 	console.log('Systems Online on Port 3000 Captian')
 })

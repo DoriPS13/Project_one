@@ -1,6 +1,6 @@
 function Item(sequelize, DataTypes){
-  return sequelize.define('post', {
-    post: DataTypes.STRING
+  return sequelize.define('item', {
+    item: DataTypes.STRING
   });
 };
 

@@ -18,9 +18,11 @@
 		 <h1>Ramen Results!<h1>
 			<ul class="inline-list">
 			 	<% ramenResults.forEach(function (ramen) {%>
-			 		<li><a href="/ramen/<%= ramen.id %>"><%= ramen.name %> -
-			 		<%= ramen.venue.name %>
-			 		</li>
+			 		<p><a href="/ramen/<%= ramen.id %>">
+			 		<h3><%= ramen.name %></h3>
+			 		<h4><%= ramen.venue.name %></h4>
+			 		<br>
+			 		</p>
 				 	<% }) %> 
 			 	</ul>
 		</div>
