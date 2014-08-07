@@ -11,7 +11,10 @@
   function success(position) {
     var lat  = position.coords.latitude;
     var long = position.coords.longitude;
-
+    var curr_lat = document.getElementById("curr_lat");
+    var curr_long = document.getElementById("curr_long");
+    curr_lat.value = lat;
+    curr_long.value = long;
 
     console.log(lat,long)
 

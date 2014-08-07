@@ -43,6 +43,18 @@ passport.deserializeUser(function(id,done) {
 //ramen search by location need to add if error
 var mclient = new locu.MenuItemClient(process.env.locuKey); 
 
+var ramenSearchLoc = function(long, lat, callback) {
+	  mclient.search({name:'ramen', location:[long, lat]}, function(result){
+	  	var ramenResults = result.objects
+	     // console.log(result.objects[0].name);
+	     console.log('running!')
+	     	// console.log(ramenResults)
+	     	callback.call(ramenResults)
+	   
+	});
+};
+
+
 var ramenSearch = function(loc, callback) {
 	  mclient.search({name:'ramen', locality: loc}, function(result){
 	  	var ramenResults = result.objects
@@ -51,6 +63,16 @@ var ramenSearch = function(loc, callback) {
 	   
 	});
 };
+
+//current location search
+app.post('/geo', function(req,res) {
+	// console.log('connectioniones successo')
+	// console.log(req.body)
+	// console.log(req.body.location.long, req.body.location.lat)
+	ramenSearchLoc(req.body.location.lat, req.body.location.long, function() {
+		res.render('results', {ramenResults: this, isAuthenticated: req.isAuthenticated()});
+	})
+});
 
 //login request
 
@@ -109,10 +131,7 @@ app.get('/results', function(req,res) {
 	});
 });
 
-//current location search
-app.post('/geo', function(req,res) {
-	
-})
+
 
 
 //rating
@@ -122,6 +141,7 @@ app.get('/logout', function(req,res){
   req.logout();
   res.redirect('/')
 });
+
 
 
 app.listen(process.env.PORT || 3000, function() {

@@ -24,8 +24,9 @@
 			<input type="submit" class="button"  value="Show Me the Ramen!">
 		</form>
 
-		<form id="search_by_loc" class="search-form">
-		  <input type="hidden" value="" id="">
+		<form method="post" action="/geo" id="search_by_loc" class="search-form">
+		  <input type="hidden" id="curr_lat" name="location[lat]">
+		  <input type="hidden" id="curr_long" name="location[long]">
 			<input type="submit" class="button" value="Find Ramen Near Me">
 		</form>
 
@@ -37,6 +38,7 @@
 <script>
 window.onload = function () {
     geoFindMe()
+
 }
 </script>
 </body>
