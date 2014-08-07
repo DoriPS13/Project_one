@@ -1,7 +1,6 @@
 <script>
-
-	
-	function geoFindMe() {
+  
+  function geoFindMe() {
 
   if (!navigator.geolocation){
     console.log("Geolocation is not supported by your browser");
@@ -15,6 +14,8 @@
     var curr_long = document.getElementById("curr_long");
     curr_lat.value = lat;
     curr_long.value = long;
+
+document.getElementById("search_by_loc").style.visibility="visible"
 
     console.log(lat,long)
 
