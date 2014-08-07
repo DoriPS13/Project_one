@@ -62,11 +62,11 @@ var ramenSearch = function(loc, callback) {
 
 //current location search
 app.post('/geo', function(req,res) {
-	// console.log('connectioniones successo')
-	// console.log(req.body)
-	// console.log(req.body.location.long, req.body.location.lat)
 	ramenSearchLoc(req.body.location.lat, req.body.location.long, function() {
-		res.render('results', {ramenResults: this, isAuthenticated: req.isAuthenticated()});
+		res.render('results', {
+			ramenResults: this,
+			 isAuthenticated: req.isAuthenticated()
+		});
 	})
 });
 
@@ -120,7 +120,7 @@ app.get('/results', function(req,res) {
 
 })
 
- app.get('/ramen/:id', function(req,res) {
+app.get('/ramen/:id', function(req,res) {
 	var ramenId = req.params.id
 	db.item.find({ where: {
 		locuId: ramenId }
@@ -139,7 +139,7 @@ app.get('/results', function(req,res) {
 	});
 })
 
-
+//rating
 app.post('/ramen/:locu_id', function(req, res){
 	if (req.user){
 		locuId = req.params.locu_id
@@ -169,9 +169,6 @@ app.post('/ramen/:locu_id', function(req, res){
 	 }
 })
 
-
-
-//rating
 
 //logout
 app.get('/logout', function(req,res){
