@@ -15,67 +15,37 @@
 <% } %>
 
 	<div class="row">
-	  <div class="small-2 large-4 columns"></div>
-	  <div id="form-wrapper" class="small-4 large-4 columns">
-				 
+	  <div id="form-wrapper" class="large-6 columns">
 				 	<% ramenResult.forEach(function (ramen) {%>
 					<h1> <%= ramen.venue.name %><h1>
 						<ul>
 					 		<li>Name: <%= ramen.name %></li>
 					 		<li>Description: <%= ramen.description %></li>
 					 		<li>Eatery: <%= ramen.venue.name %></li>
-					 		<li>Price: $<%= ramen.price %></li>
+					 		<li>Price: <%= ramen.price ? "$" + ramen.price : "N/A" %></li>
 					 		<li>Location: <%= ramen.venue.locality %></li>
+					  		<li>User Rating: <%= rating %></li>
+					 		
 					 	</ul>
-				 	<% }) %> 
+				
 				
 				 <% if (isAuthenticated) { %> 
 
-					 <div class="rating">
-						<span>☆</span>
-						<span>☆</span>
-						<span>☆</span>
-						<span>☆</span>
-						<span>☆</span>
-					</div>
+				 	<form method="post" action="/ramen/<%= ramen.id %>	">
+				 		<input id="rating1" type="range" name="score" min="1" max="5"/>
+				 		<input type="submit" value="Rate This Ramen">
+				 	</form>
 
 				 <% } %>
+			<% }) %> 
+		</div>
+	  <div class="large-6 columns"></div>
+				 
+	
 			<div id='map'></div>
 		</div>
-	  	<div class="small-6 large-4 columns"></div>
-		</div>
 
-<script>
-
-L.mapbox.accessToken = 'pk.eyJ1IjoiZG9yaXBzMTMiLCJhIjoic0FNRE51byJ9.SSNLexDQmGPKXiJ1TH4lvw';
-var map = L.mapbox.map('map', 'examples.map-20v6611k')
-    .setView(['<%= ramenResult[0].venue.lat %>', '<%= ramenResult[0].venue.long %>'], 16);
-
-L.mapbox.featureLayer({
-    // this feature is in the GeoJSON format: see geojson.org
-    // for the full specification
-    type: 'Feature',
-    geometry: {
-        type: 'Point',
-        // coordinates here are in longitude, latitude order because
-        // x, y is the standard for GeoJSON and many formats
-        coordinates: [
-          '<%= ramenResult[0].venue.long %>', 
-          '<%= ramenResult[0].venue.lat %>'
-        ]
-    },
-    properties: {
-        title: '<%= ramenResult[0].venue.name %>',
-        description: '<%= ramenResult[0].venue.street_address %>',
-        // one can customize markers by adding simplestyle properties
-        // https://www.mapbox.com/foundations/an-open-platform/#simplestyle
-			    "marker-symbol": "star",
-			    "marker-size": "medium",
-			    "marker-color": "#f44"
-    }
-}).addTo(map);
-</script>
- 
+<%- include partials/single_result_map.ejs %>
 
 </body>
 </html>

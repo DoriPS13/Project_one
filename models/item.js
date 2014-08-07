@@ -1,7 +1,22 @@
 function Item(sequelize, DataTypes){
-  return sequelize.define('item', {
-    item: DataTypes.STRING
+  Item = sequelize.define('item', {
+    ratingCount: {
+    	type: DataTypes.INTEGER,
+    },
+    rating: {
+    	type: DataTypes.INTEGER,
+    },
+    locuId: {
+    	type: DataTypes.STRING,
+    }
+  },{
+  	classMethods: {
+  		associate: function(db) {
+        Item.hasMany(db.user, {through: db.user_items});
+  		}
+  	}
   });
+  return Item;
 };
 
 

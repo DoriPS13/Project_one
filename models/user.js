@@ -21,6 +21,9 @@ module.exports = function (sequelize, DataTypes){
     }
   }, {
     classMethods: {
+      associate: function(db){
+        User.hasMany(db.item, {through: db.user_items});
+      },
       encryptPass: function(password) {
         var hash = bcrypt.hashSync(password, salt);
         return hash;
