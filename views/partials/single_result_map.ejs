@@ -29,4 +29,11 @@ L.mapbox.featureLayer({
 			    "marker-color": "#f44"
     }
 }).addTo(map);
+		
+		map.dragging.disable();
+    map.touchZoom.disable();
+    map.doubleClickZoom.disable();
+    map.scrollWheelZoom.disable();
+    if (map.tap) map.tap.disable();
+
 </script>

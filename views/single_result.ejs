@@ -19,7 +19,7 @@
 				 	<% ramenResult.forEach(function (ramen) {%>
 					<h1> <%= ramen.venue.name %><h1>
 						<ul>
-					 		<li>Name: <%= ramen.name %></li>
+					 		<li><h3>Name: <%= ramen.name %></h3></li>
 					 		<li>Description: <%= ramen.description %></li>
 					 		<li>Eatery: <%= ramen.venue.name %></li>
 					 		<li>Price: <%= ramen.price ? "$" + ramen.price : "N/A" %></li>
@@ -38,10 +38,10 @@
 				 <% } %>
 			<% }) %> 
 		</div>
-	  <div class="large-6 columns"></div>
+	  <div  class="large-6 columns"></div>
 				 
 	
-			<div id='map'></div>
+			<div style="width:50%;" id='map'></div>
 		</div>
 
 <%- include partials/single_result_map.ejs %>
