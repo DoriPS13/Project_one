@@ -12,6 +12,12 @@
 	background: fixed url(http://1.bp.blogspot.com/-km9eM3hFac0/Tlw93ueTqOI/AAAAAAAAEPU/LYhBIrITHTo/s1600/Totto+Ramen_8-19-2011-32.jpg);
 }
 
+#signup_form {
+	margin:auto;
+	width: 50%;
+	text-align: center;
+}
+
 #results {
 	padding-top: 2em;
 	text-align: center;
