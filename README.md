@@ -19,4 +19,4 @@ I have always had trouble looking for ramen on yelp. I decided to make this app 
 
 ### Find It Here
 
-	http://ramen-hunter.herokuapp.com
+	[ramen-hunter](http://ramen-hunter.herokuapp.com)
