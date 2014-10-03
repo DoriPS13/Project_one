@@ -5,7 +5,7 @@ Ramen Hunter is an app to search for ramen by either geolocation or user input l
 
 ## Overview
 
-I have always had trouble looking for ramen on yelp. I decided to make this app to help search for ramen based on a menu items. The basic functionality is done by the Locu API menu search and HTML 5 geolocation feature, with javascript to grab the users location onload.
+I have always had trouble looking for ramen on yelp. I decided to make this app to help search for ramen based on a menu items. The basic functionality is done by the Locu API menu search and HTML 5 geolocation feature, with javascript to grab the users location onload. This project was done after four weeks of learning to code.
 
 
 ### Constructed With
