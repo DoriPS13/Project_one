@@ -13,7 +13,7 @@ module.exports = {
       updatedAt: DataTypes.DATE,
       username: {
         type: DataTypes.STRING,
-          unique: true, 
+          unique: true,
           allowNull: false,
       },
       password: {

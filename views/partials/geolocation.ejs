@@ -1,5 +1,5 @@
 <script>
-  
+
   function geoFindMe() {
 
   if (!navigator.geolocation){
@@ -48,18 +48,7 @@ document.getElementById("search_by_loc").style.visibility="visible"
     console.log('DOH!');
   };
 
- 
-
   navigator.geolocation.getCurrentPosition(success, error);
 }
-
-// window.onload = function () {
-//     geoFindMe()
-//   // var geoButton = document.getElementById("search_by_loc");
-//   // geoButton.onsubmit = function (event) {
-//   //   event.preventDefault();
-//   // };
-// }
-
 
 </script>

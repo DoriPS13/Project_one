@@ -38,11 +38,8 @@
 }
 
 #map {
-	position: absolute; top: 4em; 
+	position: absolute; top: 4em;
  	z-index: 1;
 	width: 100%;
 		margin: auto;
 }
-/*.row {
-	height: 100%;
-}*/

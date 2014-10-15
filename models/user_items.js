@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
          user_items.belongsTo(db.item);
       }
     }
-  })
+  });
 
-  return user_items
-}
+  return user_items;
+};

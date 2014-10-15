@@ -5,45 +5,39 @@
 	<meta charset=utf-8 />
 	<title>Ramen Hunter</title>
 
-<%- include partials/mapbox_head.ejs %>
+	<%- include partials/mapbox_head.ejs %>
+	<% if (isAuthenticated) { %>
+		<%- include partials/signed_in_nav.ejs %>
+	<% }else{ %>
+		<%- include partials/not_signed_in_nav.ejs %>
+	<% } %>
 
-<% if (isAuthenticated) { %> 
-<%- include partials/signed_in_nav.ejs %>
-<% }else{ %>
-<%- include partials/not_signed_in_nav.ejs %>
+<div style="margin-top: 2em" class="row">
+  <div class="large-6 columns">
+	<% ramenResult.forEach(function (ramen) {%>
+	<h1> <%= ramen.venue.name %><h1>
+		<ul>
+	 		<li><h3>Name: <%= ramen.name %></h3></li>
+	 		<li>Description: <%= ramen.description %></li>
+	 		<li>Eatery: <%= ramen.venue.name %></li>
+	 		<li>Price: <%= ramen.price ? "$" + ramen.price : "N/A" %></li>
+	 		<li>Location: <%= ramen.venue.locality %></li>
+	  	<li>User Rating: <%= rating %></li>
+	 	</ul>
 
-<% } %>
+		<% if (isAuthenticated) { %>
 
-	<div style="margin-top: 2em" class="row">
-	  <div class="large-6 columns">
-				 	<% ramenResult.forEach(function (ramen) {%>
-					<h1> <%= ramen.venue.name %><h1>
-						<ul>
-					 		<li><h3>Name: <%= ramen.name %></h3></li>
-					 		<li>Description: <%= ramen.description %></li>
-					 		<li>Eatery: <%= ramen.venue.name %></li>
-					 		<li>Price: <%= ramen.price ? "$" + ramen.price : "N/A" %></li>
-					 		<li>Location: <%= ramen.venue.locality %></li>
-					  		<li>User Rating: <%= rating %></li>
-					 		
-					 	</ul>
-				
-				 	<% if (isAuthenticated) { %> 
-
-				 	<h5> Rate This Ramen </h5>
-				 	<form method="post" action="/ramen/<%= ramen.id %>	">
-				 		<input id="rating1" type="range" name="score" min="1" max="5"/>
-				 		<input type="submit" value="Rate This Ramen">
-				 	</form>
-
-				 <% } %>
-			<% }) %> 
-		</div>
-	  <div  class="large-6 columns"></div>
-				 
-	
-			<div style="width:50%;" id='map'></div>
-		</div>
+		 	<h5> Rate This Ramen </h5>
+		 	<form method="post" action="/ramen/<%= ramen.id %>	">
+		 		<input id="rating1" type="range" name="score" min="1" max="5"/>
+		 		<input type="submit" value="Rate This Ramen">
+		 	</form>
+		<% } %>
+	<% }) %>
+	</div>
+	<div  class="large-6 columns"></div>
+	<div style="width:50%;" id='map'></div>
+</div>
 
 <%- include partials/single_result_map.ejs %>
 
