@@ -1,5 +1,3 @@
-
-
 <script>
 
 L.mapbox.accessToken = 'pk.eyJ1IjoiZG9yaXBzMTMiLCJhIjoic0FNRE51byJ9.SSNLexDQmGPKXiJ1TH4lvw';
@@ -15,7 +13,7 @@ L.mapbox.featureLayer({
         // coordinates here are in longitude, latitude order because
         // x, y is the standard for GeoJSON and many formats
         coordinates: [
-          '<%= ramenResult[0].venue.long %>', 
+          '<%= ramenResult[0].venue.long %>',
           '<%= ramenResult[0].venue.lat %>'
         ]
     },
@@ -29,7 +27,7 @@ L.mapbox.featureLayer({
 			    "marker-color": "#f44"
     }
 }).addTo(map);
-		
+
 		map.dragging.disable();
     map.touchZoom.disable();
     map.doubleClickZoom.disable();
