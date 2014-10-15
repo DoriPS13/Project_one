@@ -17,7 +17,7 @@ function Item(sequelize, DataTypes){
   	}
   });
   return Item;
-};
+}
 
 
 
