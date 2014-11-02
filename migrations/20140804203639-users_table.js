@@ -1,5 +1,3 @@
-// copied, not sure if best practice
-
 module.exports = {
   up: function(migration, DataTypes, done) {
     // add altering commands here, calling 'done' when finished
