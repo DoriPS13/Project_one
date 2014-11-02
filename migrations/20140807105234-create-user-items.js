@@ -18,11 +18,11 @@ module.exports = {
           foreignKey: true
         }
       })
-      .complete(done)
+      .complete(done);
   },
   down: function(migration, DataTypes, done) {
     migration
       .dropTable('user_items')
-      .complete(done)
+      .complete(done);
   }
-}
+};
