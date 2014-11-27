@@ -47,7 +47,7 @@ var ramenSearchLoc = function(long, lat, callback) {
   mclient.search({name:'ramen', location:[long, lat]}, function(result){
   	var ramenResults = result.objects;
     console.log('running!');
-     	callback.call(ramenResults);
+    callback.call(ramenResults);
 	});
 };
 
