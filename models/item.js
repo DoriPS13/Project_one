@@ -19,6 +19,4 @@ function Item(sequelize, DataTypes){
   return Item;
 }
 
-
-
 module.exports = Item;
