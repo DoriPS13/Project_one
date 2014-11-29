@@ -1,3 +1,6 @@
+* {
+	text-align: center
+}
 #form-wrapper {
 	width: 100%;
 	margin: 10em 0;
@@ -11,13 +14,11 @@
 #results_body {
 	background: fixed url(http://1.bp.blogspot.com/-km9eM3hFac0/Tlw93ueTqOI/AAAAAAAAEPU/LYhBIrITHTo/s1600/Totto+Ramen_8-19-2011-32.jpg);
 }
-
 #signup_form {
 	margin:auto;
 	width: 50%;
 	text-align: center;
 }
-
 #results {
 	padding: 2em;
 	text-align: center;
@@ -25,21 +26,15 @@
 	width: 100%;
 	background-color: rgba(225,225,225,0.7);
 }
-
 #search_by_loc {
 	top: 120px;
-}
-
-* {
-	text-align: center
 }
 #single_r_map {
 	width: 50%;
 }
-
 #map {
 	position: absolute; top: 4em;
  	z-index: 1;
 	width: 100%;
-		margin: auto;
+	margin: auto;
 }
